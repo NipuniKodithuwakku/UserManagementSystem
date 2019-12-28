@@ -1,0 +1,33 @@
+body{
+	font-family: arial;
+	font-size: 14px;
+}
+.login{
+	width: 350px;
+	margin: 100px auto;
+
+}
+input{
+	display: block;
+	width: 100%;
+	padding: 5px;
+	box-sizing: border-box;
+	
+}
+
+button{
+	width: 100%;
+	padding: 5px;
+	
+}
+header{
+	background-color: #eee;
+	overflow: auto;
+	padding: 10px;
+}
+header .appname{
+	float: left;
+}
+header .welcome-note{
+	float: right;
+}
