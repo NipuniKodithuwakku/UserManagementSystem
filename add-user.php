@@ -10,22 +10,30 @@
 
     <style>
     main{
+        margin:100px auto;
         width:1000px;
-        margin:30px auto;
-    } 
+
+    }
+    .userform label{
+        width:30%;
+        float:left;
+    }
+    h1{
+        font-size:60px;
+    }
+    .back{
+        font-size:25px;
+    }
     
     input{
         padding:5px;
-        width:80%;
-        float:right;
-        margin-bottom:10px;
+        width:60%;
+    
         
     } 
     button{
-        width:25%;
-        margin-top:20px;
-        margin-left:65px;
-        padding:6px;
+        width:200px;
+        
     }
     
 
@@ -40,7 +48,8 @@
 
 </header>
 <main>
-<form action=" " method="post">
+<h1>Add New User<span class="back"><a href="users.php">>Back to user list</a></span></h1>
+<form action="add-user.php" method="post" class="userform">
 <p>
 <label>First Name:</label>
 <input type="text" name="first_name" required="">
@@ -59,12 +68,9 @@
 </p>
 <p>
 <button type="submit" name=>Save</button>
+<span class="back"><a href="#">cancel</a></span>
 </p>
 </form>
-
-
-</main>
-
-    
+</main>   
 </body>
 </html>
