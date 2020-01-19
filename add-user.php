@@ -1,4 +1,18 @@
 <?php session_start();?>
+<?php require_once('connection/connection.php');?>
+<?php
+    $errors =array();
+    if (isset($_POST['submit'])) {
+       //checking required field
+       if (empty($_POST['first_name'])) {
+           $errors = "First name is required";
+       }
+    }
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,6 +63,14 @@
 </header>
 <main>
 <h1>Add New User<span class="back"><a href="users.php">>Back to user list</a></span></h1>
+<?php
+    if (empty($errors)) {
+        $errors = "There were some errors";
+    }
+
+
+
+?>
 <form action="add-user.php" method="post" class="userform">
 <p>
 <label>First Name:</label>
