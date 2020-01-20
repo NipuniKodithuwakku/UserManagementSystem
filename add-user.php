@@ -5,20 +5,20 @@
     $errors =array();
     if (isset($_POST['submit'])) {
        //checking required field
-       if (empty($_POST['first_name'])) {
-           $errors = "First name is required";
+       if (empty(trim($_POST['first_name']))) {
+           $errors[] = "First name is required";
        }
 
-       if (empty($_POST['last_name'])) {
-        $errors = "last name is required";
+       if (empty(trim($_POST['last_name']))) {
+        $errors[] = "last name is required";
         }
 
-        if (empty($_POST['email'])) {
-            $errors = "email is required";
+        if (empty(trim($_POST['email']))) {
+            $errors[] = "email is required";
         }
 
-        if (empty($_POST['password'])) {
-            $errors = "password is required";
+        if (empty(trim($_POST['password']))) {
+            $errors[] = "password is required";
         }
     }
 
@@ -62,6 +62,9 @@
         width:200px;
         
     }
+    .errmsg{
+        margin:20px 0;
+    }
     
 
 
@@ -79,11 +82,11 @@
 <?php
     if (!empty($errors)) {
 
-        echo "<div>";
-        echo "There were some errors";
+        echo '<div class="errmsg">';
+        echo "<b>There were some errors</b>";
         
         foreach ($errors as $error) {
-           echo $error;
+          echo $error.'<br>';
         }
 
         echo "</div>";
@@ -111,7 +114,7 @@
 <input type="password" name="password" >
 </p>
 <p>
-<button type="submit" name=>Save</button>
+<button type="submit" name="submit">Save</button>
 <span class="back"><a href="#">cancel</a></span>
 </p>
 </form>
