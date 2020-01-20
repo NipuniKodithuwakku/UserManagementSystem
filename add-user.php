@@ -1,5 +1,6 @@
 <?php session_start();?>
-<?php require_once('connection/connection.php');?>
+<?php require_once("connection/connection.php")?>
+
 <?php
     $errors =array();
     if (isset($_POST['submit'])) {
@@ -7,6 +8,18 @@
        if (empty($_POST['first_name'])) {
            $errors = "First name is required";
        }
+
+       if (empty($_POST['last_name'])) {
+        $errors = "last name is required";
+        }
+
+        if (empty($_POST['email'])) {
+            $errors = "email is required";
+        }
+
+        if (empty($_POST['password'])) {
+            $errors = "password is required";
+        }
     }
 
 
@@ -64,8 +77,17 @@
 <main>
 <h1>Add New User<span class="back"><a href="users.php">>Back to user list</a></span></h1>
 <?php
-    if (empty($errors)) {
-        $errors = "There were some errors";
+    if (!empty($errors)) {
+
+        echo "<div>";
+        echo "There were some errors";
+        
+        foreach ($errors as $error) {
+           echo $error;
+        }
+
+        echo "</div>";
+        
     }
 
 
@@ -74,19 +96,19 @@
 <form action="add-user.php" method="post" class="userform">
 <p>
 <label>First Name:</label>
-<input type="text" name="first_name" required="">
+<input type="text" name="first_name" >
 </p>
 <p>
 <label>Last Name:</label>
-<input type="text" name="last_name" required="">
+<input type="text" name="last_name" >
 </p>
 <p>
 <label>Email Address:</label>
-<input type="text" name="email" required="">
+<input type="text" name="email">
 </p>
 <p>
 <label>New Password:</label>
-<input type="password" name="password" required="">
+<input type="password" name="password" >
 </p>
 <p>
 <button type="submit" name=>Save</button>
