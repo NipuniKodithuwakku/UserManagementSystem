@@ -2,27 +2,45 @@
 <?php require_once("connection/connection.php")?>
 
 <?php
-    $errors =array();
-    if (isset($_POST['submit'])) {
-       //checking required field
-       if (empty(trim($_POST['first_name']))) {
-           $errors[] = "First name is required";
-       }
+    // $errors =array();
+    // if (isset($_POST['submit'])) {
+    //    //checking required field
+    //    if (empty(trim($_POST['first_name']))) {
+    //        $errors[] = "First name is required";
+    //    }
 
-       if (empty(trim($_POST['last_name']))) {
-        $errors[] = "last name is required";
-        }
+    //    if (empty(trim($_POST['last_name']))) {
+    //     $errors[] = "last name is required";
+    //     }
 
-        if (empty(trim($_POST['email']))) {
-            $errors[] = "email is required";
-        }
+    //     if (empty(trim($_POST['email']))) {
+    //         $errors[] = "email is required";
+    //     }
 
-        if (empty(trim($_POST['password']))) {
-            $errors[] = "password is required";
+    //     if (empty(trim($_POST['password']))) {
+    //         $errors[] = "password is required";
+    //     }
+    // }
+
+    //checking required fields
+
+    $req_fields = array('first_name','last_name', 'email' ,'password');
+
+    foreach ($req_fields as  $field) {
+        if (empty(trim($_POST[$field]))) {
+            $errors[] = $field . "is required";
         }
     }
 
+    //checking max width
 
+    $max_length_fields = array('first_name' => 50, 'last_name' => 100, 'email' => 100, 'password' => 40);
+
+    foreach ($max_length_fields as  $field=> $max_length) {
+        if (strlen(trim($_POST[$field]))) {
+            $errors[] = $field . "should be less than".$max_length."characters";
+        }
+    }
 
 ?>
 
