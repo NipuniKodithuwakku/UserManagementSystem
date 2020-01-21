@@ -2,8 +2,8 @@
 <?php require_once("connection/connection.php")?>
 
 <?php
-    // $errors =array();
-    // if (isset($_POST['submit'])) {
+    $errors =array();
+    if (isset($_POST['submit'])) {
     //    //checking required field
     //    if (empty(trim($_POST['first_name']))) {
     //        $errors[] = "First name is required";
@@ -20,7 +20,7 @@
     //     if (empty(trim($_POST['password']))) {
     //         $errors[] = "password is required";
     //     }
-    // }
+    
 
     //checking required fields
 
@@ -38,11 +38,14 @@
 
     foreach ($max_length_fields as  $field=> $max_length) {
         if (strlen(trim($_POST[$field]))) {
-            $errors[] = $field . "should be less than".$max_length."characters";
+            $errors[] = $field . "should be less than"." ".$max_length." "."characters";
         }
     }
 
+    }
+
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -101,7 +104,7 @@
     if (!empty($errors)) {
 
         echo '<div class="errmsg">';
-        echo "<b>There were some errors</b>";
+        echo "<b>There were some errors</b> <br>";
         
         foreach ($errors as $error) {
           echo $error.'<br>';
@@ -136,6 +139,10 @@
 <span class="back"><a href="#">cancel</a></span>
 </p>
 </form>
+
+
+
+
 </main>   
 </body>
 </html>
