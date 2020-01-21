@@ -3,6 +3,11 @@
 
 <?php
     $errors =array();
+
+    $first_name = "";
+    $last_name = "";
+    $email = "";
+
     if (isset($_POST['submit'])) {
     //    //checking required field
     //    if (empty(trim($_POST['first_name']))) {
@@ -20,6 +25,12 @@
     //     if (empty(trim($_POST['password']))) {
     //         $errors[] = "password is required";
     //     }
+
+    //asign post values to variables
+   $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $email = $_POST['email'];
+
     
 
     //checking required fields
@@ -120,15 +131,15 @@
 <form action="add-user.php" method="post" class="userform">
 <p>
 <label>First Name:</label>
-<input type="text" name="first_name" >
+<input type="text" name="first_name" <?php echo 'value = "' .$first_name.'"' ?> >
 </p>
 <p>
 <label>Last Name:</label>
-<input type="text" name="last_name" >
+<input type="text" name="last_name" <?php echo 'value = "' .$last_name.'"' ?> >
 </p>
 <p>
 <label>Email Address:</label>
-<input type="text" name="email">
+<input type="text" name="email" <?php echo 'value = "' .$email.'"' ?> >
 </p>
 <p>
 <label>New Password:</label>
