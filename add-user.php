@@ -53,6 +53,18 @@
         }
     }
 
+    //checking if email address already exists
+    $email = mysqli_real_escape_String($con,$_POST['email']);
+    $query = "SELECT * FROM user WHERE email = '{$email}' LIMIT 1";
+    $result_set = mysqli_query($con,$query);
+    
+    if ($result_set){
+        if (mysqli_num_rows($result_set) ==1) {
+
+           $errors[] = "Email address already exists";
+        }
+    }
+
     }
 
 ?>
